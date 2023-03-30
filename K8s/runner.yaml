@@ -1,24 +1,9 @@
 apiVersion: actions.summerwind.dev/v1alpha1
 kind: RunnerDeployment
 metadata:
-  name: github-runner-api
-  namespace: default
+  name: example-runnerdeploy
 spec:
   replicas: 1
   template:
     spec:
-      serviceAccountName: github-runner-api-sa
-      automountServiceAccountToken: true
-      image: summerwind/actions-runner-dind
-      dockerdWithinRunnerContainer: true
-      labels:
-        - k8s-api
-      repository: prjmpkcopper/k8s-runner-test
-      workVolumeClaimTemplate:
-        storageClassName: "standard"
-        accessModes:
-          - ReadWriteOnce
-        resources:
-          requests:
-            storage: 5Gi
-      env: []
+      repository: daniyalAhmed-code/github-runner

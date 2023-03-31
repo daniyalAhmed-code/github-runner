@@ -10,7 +10,6 @@ jobs:
     name: Build
     runs-on:
       - self-hosted
-      - k8s-api
     steps:
       - name: Get Pods
         run: |

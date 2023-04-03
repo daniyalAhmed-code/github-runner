@@ -40,7 +40,7 @@ jobs:
     steps:
         - name: Hello World
           run: |
-          set -ex
-          cd $HOME
-          pwd
-          ls -la
+            set -ex
+            cd $HOME
+            pwd
+            ls -la

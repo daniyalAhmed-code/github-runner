@@ -44,7 +44,7 @@ jobs:
           node-version: ${{ matrix.node-version }}
       - name: npm install, and test
         run: |
-          touch package.json
+          npm init -y
           npm install
           npm test
         env:
@@ -56,6 +56,7 @@ jobs:
     needs:
       - start-runner # required to get output from the start-runner job
       - do-the-job # required to wait when the main job is done
+      - run-npm-test
     steps:
       - name: Hello World
         run: pwd

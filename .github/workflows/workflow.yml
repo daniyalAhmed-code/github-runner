@@ -32,11 +32,9 @@ jobs:
 
   run-npm-test:
     runs-on: self-hosted
-    container: node:14
     needs: do-the-job
     strategy:
       matrix:
-        os: [ubuntu-latest]
         node-version: [14.x]
     steps:
       - run: node --version

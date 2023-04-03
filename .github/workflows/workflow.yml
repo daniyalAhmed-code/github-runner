@@ -5,6 +5,7 @@ on:
     branches:
       - "*"
 
+
 jobs:
   start-runner:
     name: Start kubernetes runner

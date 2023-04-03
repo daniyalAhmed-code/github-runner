@@ -7,20 +7,30 @@ on:
 
 jobs:
   start-runner:
-    name: Start self-hosted EC2 runner
+    name: Start kubernetes runner
     runs-on: self-hosted
     steps:
-      - name: Start EC2 runner
+      - name: Start kubernetes runner
         run: pwd
   do-the-job:
     name: Do the job on the runner
     runs-on: self-hosted
     needs: start-runner # required to start the main job when the runner is ready
+    strategy: 
+        matrix:
+            node-version: [12.x]
+            
     steps:
-      - name: Hello World
-        run: pwd
+      - uses: actions/checkout@v2
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+            node-version: ${{ matrix.node-version }}
+      - run: npm install
+      - run: npm run build --if-present
+      - run: npm test
   stop-runner:
-    name: Stop self-hosted EC2 runner
+    name: Stop runner
     runs-on: self-hosted
     needs:
       - start-runner # required to get output from the start-runner job

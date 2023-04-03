@@ -13,7 +13,7 @@ jobs:
       - name: Start kubernetes runner
         run: pwd
   do-the-job:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     steps:
       - uses: actions/checkout@v2
       - name: npm install and build webpack
@@ -26,8 +26,8 @@ jobs:
           path: public/
 
   run-npm-test:
-    runs-on: ubuntu-latest
-    needs: run-npm-build
+    runs-on: self-hosted
+    needs: do-the-job
     strategy:
       matrix:
         os: [ubuntu-latest]

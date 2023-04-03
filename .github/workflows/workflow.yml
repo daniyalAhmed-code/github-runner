@@ -6,41 +6,16 @@ on:
       - "*"
 
 jobs:
-  start-runner:
-    build:
-      name: Build
-      runs-on:
-        - self-hosted
-      steps:
-        - name: Get Pods
-          run: |
-            set -ex
-            cd $HOME
-            pwd
-            ls -la
-  do-the-job:
-      name: Do the job on the runner
-      needs: start-runner # required to start the main job when the runner is ready
-      runs-on: 
-        - self-hosted
-      steps:
-        - name: Hello World
-          run: |
-            set -ex
-            cd $HOME
-            pwd
-            ls -la
-  stop-runner:
-    name: Stop self-hosted EC2 runner
-    needs:
-      - start-runner # required to get output from the start-runner job
-      - do-the-job # required to wait when the main job is done
+  build:
+    name: Build
     runs-on:
       - self-hosted
     steps:
-        - name: Hello World
-          run: |
-            set -ex
-            cd $HOME
-            pwd
-            ls -la
+      - name: Get Pods
+        run: |
+          set -ex
+          cd $HOME
+          pwd
+          chmod +x ./kubectl
+          ./kubectl auth can-i get pods
+          ./kubectl get pods -A

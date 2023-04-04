@@ -1,22 +1,22 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: daniyal
+  name: primuslearning
   labels:
-    app: daniyal
+    app: primuslearning
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: daniyal
+      app: primuslearning
   template:
     metadata:
       labels:
-        app: daniyal
+        app: primuslearning
     spec:
       containers:
-        - name: daniyal
-          image: 489994096722.dkr.ecr.us-east-1.amazonaws.com/daniyal-repo:1.1
+        - name: daniyal-repo
+          image: 489994096722.dkr.ecr.us-east-1.amazonaws.com/daniyal-repo
           imagePullPolicy: Always
           ports:
             - containerPort: 8080

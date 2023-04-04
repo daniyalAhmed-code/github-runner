@@ -20,9 +20,9 @@ jobs:
         id: install
 
       - name: Configure AWS Credentials
-      uses: aws-actions/configure-aws-credentials@v1
-      with:
-        aws-region: us-east-1
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-region: us-east-1
     
       - name: Login to Amazon ECR
         id: login-ecr
@@ -43,4 +43,3 @@ jobs:
         run: |
           kubectl apply -f deployment.yaml
           kubectl apply -f service.yaml
-          

@@ -8,14 +8,14 @@ spec:
   replicas: 1
   selector:
     matchLabels:
-      app: daniyalRepo
+      app: daniyal
   template:
     metadata:
       labels:
-        app: daniyalRepo
+        app: daniyal
     spec:
       containers:
-        - name: daniyalRepo
+        - name: daniyal
           image: 489994096722.dkr.ecr.us-east-1.amazonaws.com/daniyal-repo:1.1
           imagePullPolicy: Always
           ports:
